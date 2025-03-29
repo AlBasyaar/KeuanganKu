@@ -1,0 +1,52 @@
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  #form-transaksi {
+    grid-template-columns: 1fr !important;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    display: block;
+    margin-bottom: 10px;
+    background-color: #f9fafb;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #6b7280;
+  }
+}
+
+@media (pointer: coarse) {
+  input, 
+  select, 
+  button {
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+}
