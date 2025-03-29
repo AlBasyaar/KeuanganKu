@@ -1,113 +1,149 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>Monexa - Kelola Keuangan Anda</title>
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f4f6f9;
-    }
-  </style>
-</head>
-<body class="bg-gray-100">
-  <div class="container mx-auto px-4 py-8 max-w-6xl">
-    <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
-      <div class="bg-gradient-to-r from-green-500 to-blue-600 p-6">
-        <h1 class="text-4xl font-bold text-center text-white tracking-tight">
-          <i class="ri-wallet-3-line mr-3"></i>Monexa
-        </h1>
-        <p class="text-center text-white/80 mt-2">Kelola Keuangan Anda dengan Cerdas</p>
-      </div>
-
-      <div class="p-6">
-        <div class="grid md:grid-cols-3 gap-6 mb-6">
-          <div class="bg-green-50 p-4 rounded-xl text-center">
-            <h3 class="text-lg font-semibold text-green-700">Total Pemasukan</h3>
-            <p id="total-pemasukan" class="text-2xl font-bold text-green-600 mt-2">Rp 0</p>
-          </div>
-          <div class="bg-red-50 p-4 rounded-xl text-center">
-            <h3 class="text-lg font-semibold text-red-700">Total Pengeluaran</h3>
-            <p id="total-pengeluaran" class="text-2xl font-bold text-red-600 mt-2">Rp 0</p>
-          </div>
-          <div class="bg-blue-50 p-4 rounded-xl text-center">
-            <h3 class="text-lg font-semibold text-blue-700">Saldo Akhir</h3>
-            <p id="saldo" class="text-2xl font-bold text-blue-600 mt-2">Rp 0</p>
-          </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <title>Monexa - Kelola Keuangan Anda</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f4f6f9;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+      <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
+        <div class="bg-gradient-to-r from-green-500 to-blue-600 p-6">
+          <h1 class="text-4xl font-bold text-center text-white tracking-tight">
+            <i class="ri-wallet-3-line mr-3"></i>Monexa
+          </h1>
+          <p class="text-center text-white/80 mt-2">
+            Kelola Keuangan Anda dengan Cerdas
+          </p>
         </div>
 
-        <div class="mb-6">
-          <div class="flex items-center space-x-4 bg-gray-100 p-3 rounded-xl">
-            <i class="ri-search-line text-gray-500"></i>
-            <input 
-              type="text" 
-              id="cari" 
-              placeholder="Cari transaksi..." 
-              class="w-full bg-transparent outline-none text-gray-700"
-            >
+        <div class="p-6">
+          <div class="grid md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-green-50 p-4 rounded-xl text-center">
+              <h3 class="text-lg font-semibold text-green-700">
+                Total Pemasukan
+              </h3>
+              <p
+                id="total-pemasukan"
+                class="text-2xl font-bold text-green-600 mt-2"
+              >
+                Rp 0
+              </p>
+            </div>
+            <div class="bg-red-50 p-4 rounded-xl text-center">
+              <h3 class="text-lg font-semibold text-red-700">
+                Total Pengeluaran
+              </h3>
+              <p
+                id="total-pengeluaran"
+                class="text-2xl font-bold text-red-600 mt-2"
+              >
+                Rp 0
+              </p>
+            </div>
+            <div class="bg-blue-50 p-4 rounded-xl text-center">
+              <h3 class="text-lg font-semibold text-blue-700">Saldo Akhir</h3>
+              <p id="saldo" class="text-2xl font-bold text-blue-600 mt-2">
+                Rp 0
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="overflow-x-auto">
-          <table class="w-full bg-white rounded-xl shadow-sm">
-            <thead class="bg-gray-100">
-              <tr>
-                <th class="p-4 text-left text-gray-600">Jenis</th>
-                <th class="p-4 text-left text-gray-600">Keterangan</th>
-                <th class="p-4 text-left text-gray-600">Jumlah</th>
-                <th class="p-4 text-left text-gray-600">Tanggal</th>
-                <th class="p-4 text-left text-gray-600">Aksi</th>
-              </tr>
-            </thead>
-            <tbody id="daftar-transaksi" class="divide-y divide-gray-100">
-              <!-- Transaksi akan diisi oleh JavaScript -->
-            </tbody>
-          </table>
-        </div>
+          <div class="mb-6">
+            <div class="flex items-center space-x-4 bg-gray-100 p-3 rounded-xl">
+              <i class="ri-search-line text-gray-500"></i>
+              <input
+                type="text"
+                id="cari"
+                placeholder="Cari transaksi..."
+                class="w-full bg-transparent outline-none text-gray-700"
+              />
+            </div>
+          </div>
 
-        <div class="mt-8 bg-gray-50 p-6 rounded-xl">
-          <h2 class="text-2xl font-bold mb-4 text-gray-800">Tambah Transaksi</h2>
-          <form id="form-transaksi" class="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-            <select id="jenis" class="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500">
-              <option value="pemasukan">Pemasukan</option>
-              <option value="pengeluaran">Pengeluaran</option>
-            </select>
-            <input 
-              type="text" 
-              id="keterangan" 
-              placeholder="Keterangan" 
-              class="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+          <div class="overflow-x-auto">
+            <table class="w-full bg-white rounded-xl shadow-sm">
+              <thead class="bg-gray-100">
+                <tr>
+                  <th class="p-4 text-left text-gray-600">Jenis</th>
+                  <th class="p-4 text-left text-gray-600">Keterangan</th>
+                  <th class="p-4 text-left text-gray-600">Jumlah</th>
+                  <th class="p-4 text-left text-gray-600">Tanggal</th>
+                  <th class="p-4 text-left text-gray-600">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="daftar-transaksi" class="divide-y divide-gray-100">
+                <!-- Transaksi akan diisi oleh JavaScript -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-8 bg-gray-50 p-6 rounded-xl">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">
+              Tambah Transaksi
+            </h2>
+            <form
+              id="form-transaksi"
+              class="grid md:grid-cols-2 lg:grid-cols-5 gap-4"
             >
-            <input 
-              type="number" 
-              id="jumlah" 
-              placeholder="Jumlah" 
-              class="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-            >
-            <input 
-              type="date" 
-              id="tanggal" 
-              class="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-            >
-            <button 
-              type="submit" 
-              class="p-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-            >
-              Tambah
-            </button>
-          </form>
+              <select
+                id="jenis"
+                class="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="pemasukan">Pemasukan</option>
+                <option value="pengeluaran">Pengeluaran</option>
+              </select>
+              <input
+                type="text"
+                id="keterangan"
+                placeholder="Keterangan"
+                class="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="number"
+                id="jumlah"
+                placeholder="Jumlah"
+                class="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="date"
+                id="tanggal"
+                class="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+              />
+              <button
+                type="submit"
+                class="p-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                onclick="this.innerHTML = '<i class=\'ri-check-line\'></i> Tambah'; this.classList.add('bg-green-700'); Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Transaksi berhasil ditambahkan',
+                showConfirmButton: false,
+                timer: 1500});">Tambah
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="app.js"></script>
-  <script src="api.js"></script>
-  <script src="listener.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="app.js"></script>
+    <script src="api.js"></script>
+    <script src="listener.js"></script>
+  </body>
 </html>
